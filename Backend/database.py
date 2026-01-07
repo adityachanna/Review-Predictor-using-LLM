@@ -21,6 +21,10 @@ PASSWORD_ENCODED = quote_plus(PASSWORD) if PASSWORD else ""
 # Construct the SQLAlchemy connection string with encoded password
 DATABASE_URL = f"postgresql+psycopg2://{USER}:{PASSWORD_ENCODED}@{HOST}:{PORT}/{DBNAME}?sslmode=require"
 
+# If using Supabase Pooler (Port 6543), add prepared_statement=false to prevent errors
+if PORT == "6543":
+    DATABASE_URL += "&prepare_threshold=0"
+
 # Create the SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
 

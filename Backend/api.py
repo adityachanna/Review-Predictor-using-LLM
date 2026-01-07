@@ -8,7 +8,8 @@ from schemas import (
     ReviewCreateResponse, 
     SentimentAnalysisResponse, 
     RecommendationPriorityResponse,
-    RatingsDataResponse
+    RatingsDataResponse,
+    AllReviewsResponse
 )
 from models import Review
 from database import get_db
@@ -168,3 +169,23 @@ def get_all_ratings(db: Session = Depends(get_db)):
         "total_reviews": len(ratings),
         "average_rating": round(average_rating, 2)
     }
+
+
+@router.get("/admin/reviews", response_model=AllReviewsResponse)
+def get_all_reviews(db: Session = Depends(get_db)):
+    """
+    Admin endpoint: Returns all reviews sorted by newest first.
+    Includes full details: rating, review text, AI analysis, and timestamps.
+    """
+    
+    # Get all reviews, sorted by created_at descending (newest first)
+    reviews = db.query(Review).order_by(Review.created_at.desc()).all()
+    
+    if not reviews:
+        raise HTTPException(status_code=404, detail="No reviews found")
+    
+    return {
+        "reviews": reviews,
+        "total_count": len(reviews)
+    }
+

@@ -1,5 +1,7 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
+from datetime import datetime
+from uuid import UUID
 
 class ReviewCreate(BaseModel):
     rating: int
@@ -31,3 +33,19 @@ class RatingsDataResponse(BaseModel):
     ratings: List[int]
     total_reviews: int
     average_rating: float
+
+class ReviewDetail(BaseModel):
+    id: UUID
+    rating: int
+    review_text: Optional[str]
+    ai_summary: Optional[str]
+    ai_recommended_action: Optional[str]
+    ai_response: Optional[str]
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True  # For SQLAlchemy models
+
+class AllReviewsResponse(BaseModel):
+    reviews: List[ReviewDetail]
+    total_count: int
