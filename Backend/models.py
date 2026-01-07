@@ -4,7 +4,7 @@ from database import Base
 import uuid
 
 class Review(Base):
-    __tablename__ = "Review"
+    __tablename__ = "Review 1"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     rating = Column(Integer, nullable=False)
