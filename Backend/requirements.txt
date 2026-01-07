@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+sqlalchemy
+psycopg2-binary
+langchain
+langchain-core
+langchain-openai
+pydantic
+pandas
+numpy
+scikit-learn
+tqdm
