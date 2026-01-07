@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Feedback Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="admin-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Live Feedback & Analytics</p>
+            </div>
+        </div>
+
+        <!-- Analytics Action Buttons -->
+        <div class="analytics-actions">
+            <button class="analytics-btn" id="sentimentBtn">
+                View Sentiment Analysis
+            </button>
+            <button class="analytics-btn" id="recommendationsBtn">
+                Priority Recommendations
+            </button>
+        </div>
+
+        <!-- Chart and Stats Grid -->
+        <div class="dashboard-grid">
+            <!-- Left: Stats Cards -->
+            <div class="stats-column">
+                <div class="glass-panel stat-card">
+                    <span class="stat-label">Total Reviews</span>
+                    <span class="stat-value" id="totalReviews">-</span>
+                </div>
+                <div class="glass-panel stat-card">
+                    <span class="stat-label">Average Rating</span>
+                    <span class="stat-value" id="averageRating">-</span>
+                    <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-secondary);">out of 5.0</p>
+                </div>
+                <div class="glass-panel stat-card">
+                    <span class="stat-label">Average Sentiment</span>
+                    <span class="stat-value" id="sentimentScore">-</span>
+                    <p id="sentimentLabel" style="font-size: 0.9rem; margin-top: 5px; color: var(--text-secondary);">-
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Ratings Chart -->
+            <div class="glass-panel chart-container-wrapper">
+                <h2 style="margin-bottom: 1rem;">Ratings Distribution</h2>
+                <canvas id="ratingsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="glass-panel" style="padding: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2>Recent Submissions</h2>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span id="lastUpdated" style="font-size: 0.8rem; color: var(--text-secondary);"></span>
+                    <button id="refreshBtn" class="btn" style="padding: 0.5rem; background: rgba(255,255,255,0.1);">
+                        ↻
+                    </button>
+                </div>
+            </div>
+            <div id="reviewsList" class="reviews-grid">
+                <!-- Reviews populate here -->
+                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">Loading reviews...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Analytics -->
+    <div class="modal-overlay" id="analyticsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div id="modalBody">
+                <!-- Dynamic content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback | AI Powered</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Backend Status Indicator -->
+    <div class="backend-status" id="backendStatus">
+        <div class="status-dot pulsing" id="statusDot"></div>
+        <span id="statusText">Connecting...</span>
+    </div>
+
+    <div class="container">
+        <div class="glass-panel review-form-container">
+            <h1 style="text-align: center;">We value your feedback</h1>
+            <p style="text-align: center; margin-bottom: 2rem;">Share your experience and get an instant response.</p>
+
+            <form id="reviewForm">
+                <div class="rating-group rating-action">
+                    <!-- 5 stars, reverse order in HTML for CSS sibling selector trick, 
+                         or simple 1-5 and we handle visually. 
+                         Using the simple radio button approach (value 5 first) -->
+                    <input type="radio" id="star5" name="rating" value="5" class="star-input" required />
+                    <label for="star5" class="star-label">★</label>
+
+                    <input type="radio" id="star4" name="rating" value="4" class="star-input" />
+                    <label for="star4" class="star-label">★</label>
+
+                    <input type="radio" id="star3" name="rating" value="3" class="star-input" />
+                    <label for="star3" class="star-label">★</label>
+
+                    <input type="radio" id="star2" name="rating" value="2" class="star-input" />
+                    <label for="star2" class="star-label">★</label>
+
+                    <input type="radio" id="star1" name="rating" value="1" class="star-input" />
+                    <label for="star1" class="star-label">★</label>
+                </div>
+
+                <div class="input-group">
+                    <textarea id="reviewText" placeholder="Tell us about your experience..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Submit
+                </button>
+            </form>
+
+            <div id="responseArea" class="response-area">
+                <h3 id="responseTitle">Response</h3>
+                <p id="responseMessage"></p>
+            </div>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
