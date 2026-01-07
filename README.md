@@ -39,8 +39,8 @@ Key/
 
 ## Deployments
 
-- User dashboard: deployed to Vercel — URL: <add-url>
-- Admin dashboard: deployed to Vercel — URL: <add-url>
+- User dashboard: deployed to Vercel — [URL: <add-url>](https://userdashboard-ten.vercel.app/)
+- Admin dashboard: deployed to Vercel — [URL: <add-url>](https://admindashboard-lime-six.vercel.app/)
 - Backend API: deployed to Render — https://review-predictor-using-llm.onrender.com
 
 Notes:
